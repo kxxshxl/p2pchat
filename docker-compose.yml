@@ -1,0 +1,18 @@
+services:
+  parley:
+    build: .
+    image: parley:latest
+    restart: unless-stopped
+    ports:
+      - "${PARLEY_HTTP_PORT:-8080}:8787"
+    environment:
+      # STUN/TURN servers handed to browsers for WebRTC, as a JSON array. Without any, direct
+      # links only form between peers that can reach each other (same machine or LAN).
+      PARLEY_ICE_SERVERS: ${PARLEY_ICE_SERVERS:-[]}
+      PARLEY_TRUST_PROXY: ${PARLEY_TRUST_PROXY:-false}
+      PARLEY_LOG_LEVEL: ${PARLEY_LOG_LEVEL:-info}
+    volumes:
+      - parley-data:/data
+
+volumes:
+  parley-data:
