@@ -74,9 +74,11 @@ export async function buildApp(config: Config): Promise<App> {
 
   const staticDir = config.staticDir ? resolve(config.staticDir) : null;
   if (staticDir && existsSync(join(staticDir, "index.html"))) {
-    await app.register(fastifyStatic, { root: staticDir, wildcard: false });
+    await app.register(fastifyStatic, { root: staticDir });
     app.setNotFoundHandler((request, reply) => {
-      if (request.method === "GET" && !request.url.startsWith("/api/")) {
+      // SPA fallback for page navigations only; a missing asset must stay a real 404.
+      const path = request.url.split("?")[0]!;
+      if (request.method === "GET" && !path.startsWith("/api/") && !/\.[a-z0-9]+$/i.test(path)) {
         return reply.type("text/html").sendFile("index.html");
       }
       return reply.code(404).send({ error: "not_found", message: "Not found" });
