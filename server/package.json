@@ -1,0 +1,27 @@
+{
+  "name": "@parley/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Parley directory, mailbox relay and WebRTC signalling server",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "node --watch --disable-warning=ExperimentalWarning src/index.ts",
+    "start": "node --disable-warning=ExperimentalWarning src/index.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@fastify/static": "^10.1.11",
+    "@fastify/websocket": "^11.3.7",
+    "@parley/crypto": "*",
+    "fastify": "^5.12.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/ws": "^8.18.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1",
+    "ws": "^8.23.0"
+  }
+}
