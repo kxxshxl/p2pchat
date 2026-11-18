@@ -14,9 +14,13 @@
     "build": "npm run build --workspace web",
     "start": "npm run start --workspace server",
     "test": "npm test --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "e2e": "npm run build && playwright test"
   },
   "engines": {
     "node": ">=22.18"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
   }
 }
