@@ -1,0 +1,22 @@
+{
+  "name": "parley",
+  "private": true,
+  "version": "0.1.0",
+  "description": "End-to-end encrypted peer-to-peer chat (X3DH + Double Ratchet over WebRTC)",
+  "type": "module",
+  "workspaces": [
+    "packages/crypto",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace server & npm run dev --workspace web",
+    "build": "npm run build --workspace web",
+    "start": "npm run start --workspace server",
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

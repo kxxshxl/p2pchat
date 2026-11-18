@@ -1,0 +1,22 @@
+# dependencies & build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# local data
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+.env
+
+# test artefacts
+test-results/
+playwright-report/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
