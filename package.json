@@ -22,5 +22,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1"
-  }
+  },
+  "license": "MIT",
+  "author": "Kaushal Chenguttuvan"
 }
